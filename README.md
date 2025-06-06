@@ -1,87 +1,149 @@
-# Welcome to React Router!
+# Modern Portfolio Website
 
-A modern, production-ready template for building full-stack React applications using React Router.
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+A fully responsive, modern portfolio website built with React, TypeScript, and Tailwind CSS. Perfect for showcasing your skills, projects, and professional experience to potential employers.
 
 ## Features
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+- 🎨 Modern and clean design
+- 🌓 Dark/Light mode
+- 📱 Fully responsive
+- ⚡ Smooth animations with Framer Motion
+- 📧 Working contact form with EmailJS
+- 🔍 SEO optimized
+- 🎯 Easy to customize
+- 🚀 Fast performance
+
+## Tech Stack
+
+- React + TypeScript
+- Tailwind CSS
+- Framer Motion
+- EmailJS
+- React Icons
+- React Scroll
 
 ## Getting Started
 
+### Prerequisites
+
+- Node.js (v14+ recommended)
+- npm or yarn
+
 ### Installation
 
-Install the dependencies:
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/portfolio.git
+   cd portfolio
+   ```
 
-```bash
-npm install
-```
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
-### Development
+3. Create a `.env` file in the root directory and add your EmailJS credentials:
+   ```env
+   VITE_EMAILJS_SERVICE_ID=your_service_id
+   VITE_EMAILJS_TEMPLATE_ID=your_template_id
+   VITE_EMAILJS_PUBLIC_KEY=your_public_key
+   ```
 
-Start the development server with HMR:
+4. Start the development server:
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
 
-```bash
-npm run dev
-```
+5. Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
 
-Your application will be available at `http://localhost:5173`.
+### Customization
 
-## Building for Production
+1. Update personal information:
+   - Edit social media links in `src/components/sections/Hero.tsx`
+   - Modify project details in `src/components/sections/Projects.tsx`
+   - Update skills in `src/components/sections/Skills.tsx`
+   - Change experience details in `src/components/sections/Experience.tsx`
+   - Edit education information in `src/components/sections/Education.tsx`
 
-Create a production build:
+2. Replace images:
+   - Add your profile photo as `public/profile-photo.jpg`
+   - Add project screenshots in `public/projects/`
 
-```bash
-npm run build
-```
+3. Update colors and styling:
+   - Modify `tailwind.config.js` for theme customization
+   - Edit individual component styles as needed
 
-## Deployment
+### Deployment
 
-### Docker Deployment
+#### Deploy to Vercel
 
-To build and run using Docker:
+1. Create a Vercel account if you haven't already
+2. Install Vercel CLI:
+   ```bash
+   npm install -g vercel
+   ```
 
-```bash
-docker build -t my-app .
+3. Deploy:
+   ```bash
+   vercel
+   ```
 
-# Run the container
-docker run -p 3000:3000 my-app
-```
+#### Deploy to GitHub Pages
 
-The containerized application can be deployed to any platform that supports Docker, including:
+1. Update `vite.config.ts`:
+   ```typescript
+   export default defineConfig({
+     base: '/your-repo-name/',
+     // ... other config
+   })
+   ```
 
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
+2. Add deployment script to `package.json`:
+   ```json
+   {
+     "scripts": {
+       "deploy": "gh-pages -d dist"
+     }
+   }
+   ```
 
-### DIY Deployment
+3. Build and deploy:
+   ```bash
+   npm run build
+   npm run deploy
+   ```
 
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
+## SEO Optimization
 
-Make sure to deploy the output of `npm run build`
+The portfolio includes basic SEO optimization:
+- Meta tags for description and keywords
+- Semantic HTML structure
+- Proper heading hierarchy
+- Alt text for images
+- Mobile responsiveness
 
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
-```
+## Performance Optimization
 
-## Styling
+- Lazy loading of images
+- Code splitting
+- Optimized animations
+- Minified assets
 
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
+## Contributing
 
----
+Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
 
-Built with ❤️ using React Router.
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Framer Motion](https://www.framer.com/motion/)
+- [React Icons](https://react-icons.github.io/react-icons/)
+- [EmailJS](https://www.emailjs.com/)
