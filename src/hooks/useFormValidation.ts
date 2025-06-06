@@ -38,28 +38,23 @@ export const useFormValidation = <T extends Record<string, any>>(
 
   const [formFields, setFormFields] = useState<FormFields<T>>(initialFormFields);
 
-  const validateField = (name: keyof T, value: string, rules: ValidationRules): string => {
-    if (rules.required && !value) {
-      return 'This field is required';
+  const validateEmail = (email: string): boolean => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const validateField = (_name: keyof T, value: string, rules: ValidationRules): string => {
+    let error = '';
+
+    if (rules.required && !value.trim()) {
+      error = 'This field is required';
+    } else if (rules.email && !validateEmail(value)) {
+      error = 'Please enter a valid email address';
+    } else if (rules.minLength && value.length < rules.minLength) {
+      error = `Must be at least ${rules.minLength} characters`;
     }
 
-    if (rules.minLength && value.length < rules.minLength) {
-      return `Minimum length is ${rules.minLength} characters`;
-    }
-
-    if (rules.maxLength && value.length > rules.maxLength) {
-      return `Maximum length is ${rules.maxLength} characters`;
-    }
-
-    if (rules.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-      return 'Please enter a valid email address';
-    }
-
-    if (rules.pattern && !rules.pattern.test(value)) {
-      return 'Please enter a valid value';
-    }
-
-    return '';
+    return error;
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {

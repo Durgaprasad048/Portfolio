@@ -16,14 +16,18 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    sourcemap: true,
+    assetsDir: 'assets',
     rollupOptions: {
       output: {
         manualChunks: {
-          vendor: ['react', 'react-dom', 'framer-motion'],
-          utils: ['@emailjs/browser', 'react-scroll', 'react-intersection-observer'],
-        },
-      },
+          'vendor-react': ['react', 'react-dom'],
+          'vendor-router': ['react-router-dom'],
+          'vendor-motion': ['framer-motion'],
+          'vendor-utils': ['@emailjs/browser', 'react-scroll', 'react-intersection-observer']
+        }
+      }
     },
+    chunkSizeWarningLimit: 1000,
+    sourcemap: true
   },
 })

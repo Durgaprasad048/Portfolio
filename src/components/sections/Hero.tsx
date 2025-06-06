@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaCode } from 'react-icons/fa';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
 
 const Hero = () => {

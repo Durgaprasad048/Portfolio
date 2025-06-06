@@ -80,7 +80,7 @@ const Projects = () => {
           animate={inView ? "visible" : "hidden"}
           className="mt-12 grid gap-8 lg:grid-cols-2"
         >
-          {projects.map((project, index) => (
+          {projects.map((project) => (
             <motion.div
               key={project.title}
               variants={itemVariants}
