@@ -70,7 +70,7 @@ const About = () => {
               <div className="relative mx-auto w-full rounded-lg shadow-lg overflow-hidden">
                 <img
                   className="w-full"
-                  src="/images/profile-photo.jpg"
+                  src="/images/Photo.jpg"
                   alt="Profile"
                 />
               </div>
