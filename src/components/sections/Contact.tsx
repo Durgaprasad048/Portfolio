@@ -41,10 +41,10 @@ const Contact = () => {
     try {
       const templateParams = {
         to_name: 'Durgaprasad R',
-        from_name: formData.name,
-        from_email: formData.email, // User email from form
-        message: formData.message,
-        reply_to: formData.email, // Reply-to set to user's email
+        from_name: formData.name || 'Anonymous',
+        from_email: formData.email || 'no-reply@emailjs.com',
+        reply_to: formData.email,
+        message: `Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`,
       };
 
       await emailjs.send(
@@ -59,11 +59,7 @@ const Contact = () => {
         info: { error: false, msg: 'Message sent successfully!' },
       });
 
-      setFormData({
-        name: '',
-        email: '',
-        message: '',
-      });
+      setFormData({ name: '', email: '', message: '' });
     } catch (error) {
       console.error('EmailJS Error:', error);
       setStatus({
