@@ -12,7 +12,7 @@ const Contact = () => {
 
   useEffect(() => {
     // Initialize EmailJS
-    emailjs.init("gDtrF6xaziBWfby-k");
+    emailjs.init('gDtrF6xaziBWfby-k');
   }, []);
 
   const [formData, setFormData] = useState({
@@ -39,22 +39,18 @@ const Contact = () => {
     setStatus((prevStatus) => ({ ...prevStatus, submitting: true }));
 
     try {
-      // Send message to you
       const templateParams = {
-        to_name: "Durgaprasad R",
+        to_name: 'Durgaprasad R',
         from_name: formData.name,
-        from_email: formData.email,
-        to_email: "durgaprasad22062004@gmail.com",
+        from_email: formData.email, // User email from form
         message: formData.message,
-        reply_to: formData.email,
+        reply_to: formData.email, // Reply-to set to user's email
       };
 
-      // Send the main email
       await emailjs.send(
         'service_gw5gxvo',
         'template_9gxdl4o',
-        templateParams,
-        'gDtrF6xaziBWfby-k'
+        templateParams
       );
 
       setStatus({
@@ -97,11 +93,7 @@ const Contact = () => {
   ];
 
   return (
-    <section
-      id="contact"
-      className="py-20 bg-gray-50 dark:bg-gray-800"
-      ref={ref}
-    >
+    <section id="contact" className="py-20 bg-gray-50 dark:bg-gray-800" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="lg:text-center mb-16">
           <motion.h2
@@ -132,10 +124,7 @@ const Contact = () => {
           >
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300"
-                >
+                <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                   Name
                 </label>
                 <input
@@ -150,10 +139,7 @@ const Contact = () => {
               </div>
 
               <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300"
-                >
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                   Email
                 </label>
                 <input
@@ -168,10 +154,7 @@ const Contact = () => {
               </div>
 
               <div>
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300"
-                >
+                <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                   Message
                 </label>
                 <textarea
@@ -198,9 +181,7 @@ const Contact = () => {
               {status.info.msg && (
                 <div
                   className={`text-sm ${
-                    status.info.error
-                      ? 'text-red-500 dark:text-red-400'
-                      : 'text-green-500 dark:text-green-400'
+                    status.info.error ? 'text-red-500 dark:text-red-400' : 'text-green-500 dark:text-green-400'
                   }`}
                 >
                   {status.info.msg}
@@ -216,9 +197,7 @@ const Contact = () => {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="bg-white dark:bg-gray-900 rounded-lg shadow-lg p-6"
           >
-            <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-6">
-              Connect With Me
-            </h3>
+            <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-6">Connect With Me</h3>
             <div className="space-y-6">
               {socialLinks.map((link) => (
                 <a
@@ -235,12 +214,8 @@ const Contact = () => {
             </div>
 
             <div className="mt-8">
-              <h4 className="text-lg font-medium text-gray-900 dark:text-white mb-4">
-                Location
-              </h4>
-              <p className="text-gray-600 dark:text-gray-400">
-                Coimbatore, Tamil Nadu, India
-              </p>
+              <h4 className="text-lg font-medium text-gray-900 dark:text-white mb-4">Location</h4>
+              <p className="text-gray-600 dark:text-gray-400">Coimbatore, Tamil Nadu, India</p>
             </div>
           </motion.div>
         </div>
@@ -249,4 +224,4 @@ const Contact = () => {
   );
 };
 
-export default Contact; 
+export default Contact;
