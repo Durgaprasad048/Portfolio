@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import { motion, useScroll } from "framer-motion";
+import { motion } from "framer-motion";
 
 const ParallaxDots = () => {
   const [dots, setDots] = useState<{ x: number; y: number; size: number }[]>([]);
-  const { scrollYProgress } = useScroll();
 
   useEffect(() => {
     const generateDots = () => {
@@ -30,26 +29,20 @@ const ParallaxDots = () => {
             height: dot.size,
           }}
           initial={{ opacity: 0, y: 0 }}
-          animate={{ opacity: 0.6 }}
+          animate={{ 
+            opacity: 0.6,
+            y: [0, dot.y * 2 - 100],
+          }}
           transition={{
             opacity: {
               duration: 1,
               delay: index * 0.1,
             },
-          }}
-          animate={{
-            y: [0, dot.y * 2 - 100],
-          }}
-          transition={{
             y: {
               duration: 20,
               repeat: Infinity,
               repeatType: "reverse",
               ease: "linear",
-            },
-            opacity: {
-              duration: 1,
-              delay: index * 0.1,
             },
           }}
         />

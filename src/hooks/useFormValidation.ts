@@ -19,7 +19,7 @@ type FormFields<T> = {
   [K in keyof T]: FormField;
 };
 
-export const useFormValidation = <T extends Record<string, any>>(
+export const useFormValidation = <T extends Record<string, unknown>>(
   initialState: T,
   validationRules: { [K in keyof T]: ValidationRules }
 ) => {

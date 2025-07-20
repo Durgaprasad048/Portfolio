@@ -1,92 +1,40 @@
-import { useCallback } from "react";
-import type { Container, Engine } from "@tsparticles/engine";
-import { loadSlim } from "@tsparticles/slim";
-import Particles from "@tsparticles/react";
+import { useEffect, useState } from "react";
 
 const ParticlesBackground = () => {
-  const particlesInit = useCallback(async (engine: Engine) => {
-    await loadSlim(engine);
-  }, []);
+  const [particles, setParticles] = useState<Array<{ id: number; x: number; y: number; size: number; speed: number }>>([]);
 
-  const particlesLoaded = useCallback(async (container: Container | undefined) => {
-    console.log("Particles container loaded", container);
+  useEffect(() => {
+    const generateParticles = () => {
+      const newParticles = Array.from({ length: 50 }, (_, i) => ({
+        id: i,
+        x: Math.random() * 100,
+        y: Math.random() * 100,
+        size: Math.random() * 3 + 1,
+        speed: Math.random() * 2 + 1,
+      }));
+      setParticles(newParticles);
+    };
+
+    generateParticles();
   }, []);
 
   return (
-    <Particles
-      className="absolute inset-0 -z-10"
-      id="tsparticles"
-      init={particlesInit}
-      loaded={particlesLoaded}
-      options={{
-        background: {
-          color: {
-            value: "transparent",
-          },
-        },
-        fpsLimit: 120,
-        interactivity: {
-          events: {
-            onClick: {
-              enable: true,
-              mode: "push",
-            },
-            onHover: {
-              enable: true,
-              mode: "repulse",
-            },
-          },
-          modes: {
-            push: {
-              quantity: 4,
-            },
-            repulse: {
-              distance: 200,
-              duration: 0.4,
-            },
-          },
-        },
-        particles: {
-          color: {
-            value: "#6366f1",
-          },
-          links: {
-            color: "#6366f1",
-            distance: 150,
-            enable: true,
-            opacity: 0.5,
-            width: 1,
-          },
-          move: {
-            direction: "none",
-            enable: true,
-            outModes: {
-              default: "bounce",
-            },
-            random: false,
-            speed: 2,
-            straight: false,
-          },
-          number: {
-            density: {
-              enable: true,
-              area: 800,
-            },
-            value: 80,
-          },
-          opacity: {
-            value: 0.5,
-          },
-          shape: {
-            type: "circle",
-          },
-          size: {
-            value: { min: 1, max: 5 },
-          },
-        },
-        detectRetina: true,
-      }}
-    />
+    <div className="absolute inset-0 -z-10 overflow-hidden">
+      {particles.map((particle) => (
+        <div
+          key={particle.id}
+          className="absolute rounded-full bg-indigo-500/30 animate-pulse"
+          style={{
+            left: `${particle.x}%`,
+            top: `${particle.y}%`,
+            width: `${particle.size}px`,
+            height: `${particle.size}px`,
+            animationDuration: `${particle.speed}s`,
+            animationDelay: `${Math.random() * 2}s`,
+          }}
+        />
+      ))}
+    </div>
   );
 };
 

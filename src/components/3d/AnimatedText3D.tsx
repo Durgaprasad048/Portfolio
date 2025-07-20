@@ -24,7 +24,7 @@ const AnimatedText3D = () => {
     <Center position={[0, 0, 0]}>
       <Text3D
         ref={textRef}
-        font="/node_modules/@react-three/drei/fonts/Inter_Bold.json"
+        font="https://threejs.org/examples/fonts/helvetiker_regular.typeface.json"
         size={0.8}
         height={0.2}
         curveSegments={12}
@@ -32,15 +32,13 @@ const AnimatedText3D = () => {
         Portfolio
         <meshMatcapMaterial
           matcap={matcapTexture}
-          emissive="#ff00ff"
-          emissiveIntensity={2}
         />
       </Text3D>
       
       {/* Glow effect */}
       <mesh ref={glowRef} scale={[1.2, 1.2, 1.2]}>
         <Text3D
-          font="/node_modules/@react-three/drei/fonts/Inter_Bold.json"
+          font="https://threejs.org/examples/fonts/helvetiker_regular.typeface.json"
           size={0.8}
           height={0.2}
           curveSegments={12}
