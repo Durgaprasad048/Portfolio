@@ -116,7 +116,7 @@ const Contact = () => {
             initial={{ opacity: 0, x: -20 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="bg-white dark:bg-gray-900 rounded-lg shadow-lg p-6"
+            className="bg-white dark:bg-gray-900 rounded-lg shadow-lg dark:shadow-gray-900/50 p-6 border border-gray-200 dark:border-gray-700"
           >
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
@@ -130,7 +130,8 @@ const Contact = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-600 dark:text-white sm:text-sm"
+                  placeholder="Enter your name"
+                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-white dark:bg-gray-800 dark:border-gray-600 dark:text-white text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 sm:text-sm"
                 />
               </div>
 
@@ -145,7 +146,8 @@ const Contact = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-600 dark:text-white sm:text-sm"
+                  placeholder="Enter your email"
+                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-white dark:bg-gray-800 dark:border-gray-600 dark:text-white text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 sm:text-sm"
                 />
               </div>
 
@@ -160,7 +162,8 @@ const Contact = () => {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-600 dark:text-white sm:text-sm"
+                  placeholder="Enter your message"
+                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-white dark:bg-gray-800 dark:border-gray-600 dark:text-white text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 sm:text-sm"
                 />
               </div>
 
@@ -168,7 +171,7 @@ const Contact = () => {
                 <button
                   type="submit"
                   disabled={status.submitting}
-                  className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50"
+                  className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 transition-colors duration-200"
                 >
                   {status.submitting ? 'Sending...' : 'Send Message'}
                 </button>
@@ -177,7 +180,7 @@ const Contact = () => {
               {status.info.msg && (
                 <div
                   className={`text-sm ${
-                    status.info.error ? 'text-red-500 dark:text-red-400' : 'text-green-500 dark:text-green-400'
+                    status.info.error ? 'text-red-600 dark:text-red-400' : 'text-green-600 dark:text-green-400'
                   }`}
                 >
                   {status.info.msg}
@@ -191,7 +194,7 @@ const Contact = () => {
             initial={{ opacity: 0, x: 20 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="bg-white dark:bg-gray-900 rounded-lg shadow-lg p-6"
+            className="bg-white dark:bg-gray-900 rounded-lg shadow-lg dark:shadow-gray-900/50 p-6 border border-gray-200 dark:border-gray-700"
           >
             <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-6">Connect With Me</h3>
             <div className="space-y-6">
