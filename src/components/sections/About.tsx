@@ -67,9 +67,9 @@ const About = () => {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="relative"
             >
-              <div className="relative mx-auto w-full rounded-lg shadow-lg overflow-hidden">
+              <div className="ml-auto max-w-xs h-w-xs object-cover rounded-lg shadow-lg overflow-hidden">
                 <img
-                  className="w-full"
+                  className="w-full f-full object-cover"
                   src="/images/Profile Photo.jpg"
                   alt="Profile"
                 />
